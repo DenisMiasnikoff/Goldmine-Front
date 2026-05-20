@@ -3,8 +3,8 @@ import { useState } from "react";
 import styles from "../_components/_Dashboard/Dashboard.module.scss";
 import Header from "../_components/Header/Header";
 import Sidebar from '../_components/Sidebar/Sidebar';
-import MainContent from '../_components/MainContent/MainContent';
-import { Post } from '../_types';
+import MainContent from "../_components/MainContent/MainContent"
+import { Post } from "../_types/DashboardPost"
 
 interface DashboardClientProps {
   posts: Post[];
