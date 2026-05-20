@@ -2,7 +2,7 @@
 
 import { useActionState, startTransition } from "react";
 import { useForm } from "react-hook-form";
-import { loginAction } from "../_lib/actions";
+import { loginAction } from "../_lib/actions"
 import styles from "../_components/RegisterForm.module.scss";
 import Button from "./Button/Button";
 import Link from "next/link";
