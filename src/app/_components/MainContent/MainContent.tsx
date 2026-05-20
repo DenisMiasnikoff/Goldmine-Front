@@ -1,8 +1,8 @@
 "use client";
 import { useState } from 'react';
-import CreatePostForm from '../CreatePostForm/CreatePostForm';
+import CreatePostForm from "../CreatePostForm/CreatePostForm";
 import styles from './MainContent.module.scss';
-import PostCard from '../PostCard/PostCard';
+import PostCard from "../PostCard/PostCard";
 import { Post } from "../../_types/DashboardPost"
 import { ImagePlus, Link } from 'lucide-react';
 
