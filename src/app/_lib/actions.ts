@@ -133,3 +133,9 @@ export async function loginAction(
 
   redirect("/dashboard");
 }
+
+export async function logoutAction() {
+  const cookieStore = await cookies();
+  cookieStore.delete('jwt');
+  redirect('/login');
+}

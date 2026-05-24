@@ -1,6 +1,6 @@
 import type { Metadata } from "next"; // Pro-tip: Add metadata for SEO!
 import { Pacifico, Lilita_One } from "next/font/google";
-import './styles/global.scss';
+
 import Providers from "./_components/Providers";
 
 const pacifico = Pacifico({

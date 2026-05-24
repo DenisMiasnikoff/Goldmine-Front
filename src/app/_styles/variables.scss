@@ -12,9 +12,9 @@ $color-button-text:#fffffe;
 $color-red-button:#B22222;
 $color-green-button:#228B22;
 // Tints & Shades
-$color-button-dark: darken($color-button, 10%);
-$color-button-light: lighten($color-button, 10%);
-$color-button-alpha: rgba($color-button, 0.2); // Great for "ghost" buttons
+$color-button-dark: color.adjust($color-button, $lightness: -10%);
+$color-button-light: color.adjust($color-button, $lightness: 10%);
+$color-button-alpha: rgba($color-button, 0.2);
 
 // --- TYPOGRAPHY ---
 $font-logo: var(--font-logo), cursive;

@@ -1,4 +1,4 @@
-@import "../../styles/abstracts/variables";
+@use "../../_styles/variables" as *;
 .btn {
     text-transform: uppercase;
     text-decoration: none;

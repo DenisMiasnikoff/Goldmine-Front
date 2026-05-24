@@ -1,4 +1,4 @@
-@import "../../styles/abstracts/variables";
+@use "../../_styles/variables.scss" as *;
 
 .header {
   font-size: 1.1rem;
@@ -70,6 +70,7 @@
   align-self: stretch; // 🚀 Key: allows hover background to fill the full height
   display: flex;
   align-items: center;
+  position:relative;
 
   & > * {
     padding: 0 2rem;
@@ -116,4 +117,41 @@
     font-weight: bold;
     color: #fff;
   }
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: white;
+  border: 1px solid #e0d5c5;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  min-width: 160px;
+  z-index: 100;
+  padding: 4px;
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  color: #663300;
+  font-size: 14px;
+  
+  &:hover {
+    background: #f5ede0;
+  }
+}
+
+.dropdownDivider {
+  height: 1px;
+  background: #e0d5c5;
+  margin: 4px 0;
 }
