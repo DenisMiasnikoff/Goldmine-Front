@@ -2,18 +2,19 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ThumbsUp, MessageSquare, ArrowLeft } from 'lucide-react';
-import { Post, Comment } from '@/app/_types/DashboardPost';
+import { Post, IComment, User } from '@/app/_types/DashboardPost';
 import { createCommentAction, upvoteCommentAction } from '@/app/_lib/actions';
 import styles from './PostPage.module.scss';
 
 interface PostPageClientProps {
   post: Post;
-  comments: Comment[];
+  comments: IComment[];
   token: string | null;
+  currentUser:User|null;
 }
 
 interface CommentCardProps {
-  comment: Comment;
+  comment: IComment;
   token: string | null;
   postId: string;
 }
@@ -54,7 +55,7 @@ export default function PostPageClient({ post, comments, token }: PostPageClient
   const router = useRouter();
   const [commentText, setCommentText] = useState<string>('');
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-  const [localComments, setLocalComments] = useState<Comment[]>(comments);
+  const [localComments, setLocalComments] = useState<   IComment[]>(comments);
   const [error, setError] = useState<string>('');
 
   const handleCommentSubmit = async () => {
@@ -113,7 +114,7 @@ export default function PostPageClient({ post, comments, token }: PostPageClient
       <div className={styles.commentForm}>
         <textarea
           className={styles.commentInput}
-          placeholder="Share your thoughts, miner..."
+          placeholder="Share your thoughts..."
           value={commentText}
           onChange={(e) => setCommentText(e.target.value)}
           rows={3}
@@ -144,7 +145,7 @@ export default function PostPageClient({ post, comments, token }: PostPageClient
           ))
         ) : (
           <div className={styles.emptyComments}>
-            <p>No comments yet. Be the first miner to speak!</p>
+            <p>No comments yet. Become first!</p>
           </div>
         )}
       </div>

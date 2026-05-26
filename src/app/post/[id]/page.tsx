@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import PostPageClient from "./PostPageClient";
 import { cookies } from "next/headers";
-import { Post, Comment as IComment } from '@/app/_types/DashboardPost';
+import { Post, IComment as IComment, User } from '@/app/_types/DashboardPost';
 
 interface PostApiResponse {
   data?: { post?: Post };
@@ -46,11 +46,27 @@ export default async function PostPage({ params }: { params: Promise<{ id: strin
     comments = commentsData.data?.comments || [];
   }
 
+  const userRes = await fetch(`${API_BASE}/users/me`, {
+  cache: 'no-store',
+  headers: { Authorization: `Bearer ${token}` }
+});
+
+interface UserApiResponse {
+  data?: { user?: User };
+}
+
+let currentUser: User | null = null;
+if (userRes.ok) {
+  const userData: UserApiResponse = await userRes.json();
+  currentUser = userData.data?.user || null;
+}
+
   return (
     <PostPageClient
       post={post}
       comments={comments}
       token={token}
+      currentUser={currentUser}
     />
   );
 }

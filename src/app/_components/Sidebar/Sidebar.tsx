@@ -27,7 +27,7 @@ export default function Sidebar({ isVisible }: SidebarProps) {
           </Link>
         </li>
         <li className={`${styles.sideNav__item} ${pathName==='/myDungeons'?styles.sideNav__item_active:""}`}>
-          <Link href="/myDungeons" className={styles.sideNav__link}>
+          <Link href="/dungeons" className={styles.sideNav__link}>
             <Warehouse color="#663300" />
             <span> My Dungeons</span>
           </Link>

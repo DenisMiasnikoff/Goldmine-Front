@@ -182,3 +182,25 @@ export async function upvoteCommentAction(
     return data.data?.message;
   }
 }
+
+export async function subscribeToDungeonAction(
+  dungeonId: string,
+  token: string
+): Promise<{ error: string } | { message: string } | void> {
+  const res = await fetch(`${API_BASE}/dungeons/${dungeonId}/subscribe`, {
+    method: 'PATCH',
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    return { error: data.message ?? 'Something went wrong' };
+  }
+
+  revalidatePath('/dungeons');
+  revalidatePath('/dashboard');
+  return { message: data.data?.message };
+}

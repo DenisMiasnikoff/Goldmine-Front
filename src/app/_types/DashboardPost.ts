@@ -25,11 +25,21 @@ export interface User {
   gems: number;
 }
 
-export interface Comment {
+export interface IComment {
   _id: string;
   text: string;
   user: PopulatedUser;
   post: string;
   upvotes: string[];
+  createdAt: string;
+}
+
+export interface Dungeon {
+  _id: string;
+  name: string;
+  description?: string;
+  dungPicture: string;
+  dungBanner: string;
+  moderators: string[];
   createdAt: string;
 }

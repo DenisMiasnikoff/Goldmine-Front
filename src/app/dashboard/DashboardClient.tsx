@@ -1,38 +1,24 @@
-"use client"
-import { useState } from "react";
-import styles from "../_components/_Dashboard/Dashboard.module.scss";
-import Header from "../_components/Header/Header";
-import Sidebar from '../_components/Sidebar/Sidebar';
-import MainContent from "../_components/MainContent/MainContent"
-import { Post, User } from "../_types/DashboardPost"
+'use client';
+import AppLayout from '../_components/AppLayout/AppLayout';
+import MainContent from '../_components/MainContent/MainContent';
+import { Post } from '../_types/DashboardPost';
+import { User } from '../_types/DashboardPost';
 
 interface DashboardClientProps {
   posts: Post[];
   dungeonId: string;
   token: string | null;
-  currentUser:User|null;
+  currentUser: User | null;
 }
 
-export default function DashboardClient({ posts, dungeonId, token,currentUser }: DashboardClientProps) {
-  const [isSideBarVisible, setIsSideBarVisible] = useState<boolean>(true);
-
-  const toggleSidebar = () => {
-    setIsSideBarVisible(!isSideBarVisible);
-  };
-
+export default function DashboardClient({ posts, token, currentUser }: DashboardClientProps) {
   return (
-    <div className={styles.container}>
-      <Header onLogoClick={toggleSidebar} currentUser={currentUser} />
-      
-      <div className={styles.content}>
-        <Sidebar isVisible={isSideBarVisible} />
-        
-        <MainContent 
-          posts={posts} 
-          dungeonId={dungeonId} 
-          token={token} 
-        />
-      </div>
-    </div>
+    <AppLayout currentUser={currentUser}>
+      <MainContent
+        posts={posts}
+       
+        token={token}
+      />
+    </AppLayout>
   );
 }

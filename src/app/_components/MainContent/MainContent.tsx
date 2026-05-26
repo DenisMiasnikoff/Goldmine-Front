@@ -1,17 +1,17 @@
 "use client";
-import { useState } from 'react';
+
 import styles from './MainContent.module.scss';
 import PostCard from '../PostCard/PostCard';
 import { Post } from '../../_types/DashboardPost';
-import { ImagePlus, Link2 } from 'lucide-react';
+
 
 interface MainContentProps {
   posts: Post[];
-  dungeonId: string;
+  
   token: string | null;
 }
 
-export default function MainContent({ posts, dungeonId, token }: MainContentProps) {
+export default function MainContent({ posts, token }: MainContentProps) {
   return (
     <main className={styles.main}>
       <section className={styles.feedZone}>
