@@ -1,0 +1,54 @@
+@use "../../_styles/variables" as *;
+
+.main {
+  flex: 1;
+  overflow-y: auto;
+  background-color: var(--color-grey-light-1);
+  padding: 24px 16px;
+}
+
+.feedZone {
+  max-width: 740px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  color: $color-paragraph;
+
+  .icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    color: $color-headline;
+    margin-bottom: 8px;
+  }
+
+  p {
+    color: $color-paragraph;
+    margin-bottom: 24px;
+  }
+}
+
+.ctaBtn {
+  padding: 10px 24px;
+  background-color: $color-button;
+  color: $color-button-text;
+  border: none;
+  border-radius: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: $color-button-dark;
+  }
+}

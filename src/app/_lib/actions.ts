@@ -63,7 +63,7 @@ export async function createPost(
   revalidatePath('/dashboard');
 }
 
-// 2. UPVOTE A POST
+
 export async function upvotePostAction(
   postId: string,
   token: string
@@ -138,4 +138,47 @@ export async function logoutAction() {
   const cookieStore = await cookies();
   cookieStore.delete('jwt');
   redirect('/login');
+}
+
+export async function createCommentAction(
+  text: string,
+  postId: string,
+  token: string
+): Promise<{ error: string } | void> {
+  const res = await fetch(`${API_BASE}/posts/${postId}/comments`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify({ text })
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    return { error: data.message ?? 'Could not post comment' };
+  }
+
+  revalidatePath(`/post/${postId}`);
+}
+
+export async function upvoteCommentAction(
+  commentId: string,
+  postId: string,
+  token: string
+): Promise<string | undefined> {
+  const res = await fetch(`${API_BASE}/posts/${postId}/comments/${commentId}/upvote`, {
+    method: 'PATCH',
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  });
+
+  const data = await res.json();
+
+  if (data.status === 'success') {
+    revalidatePath(`/post/${postId}`);
+    return data.data?.message;
+  }
 }
