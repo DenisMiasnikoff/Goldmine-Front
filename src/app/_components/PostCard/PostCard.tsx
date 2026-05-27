@@ -22,8 +22,7 @@ export default function PostCard({ post, token }: PostCardProps) {
     e.preventDefault();
     if (!token) return;
 
-    const message = await upvotePostAction(post._id, token);
-
+   const message = await upvotePostAction(post._id, token);
     if (message) {
       if (message.includes('removed')) {
         setUpvoteCount(prev => prev - 1);

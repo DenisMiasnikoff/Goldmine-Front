@@ -88,7 +88,7 @@ export async function upvotePostAction(
 export async function forgeDungeon(
   formData: FormData,
   token: string
-): Promise<void> {
+): Promise<{ error: string } | void> {
 
   const rawData: DungeonData = {
     name: formData.get('name') as string,
@@ -203,4 +203,29 @@ export async function subscribeToDungeonAction(
   revalidatePath('/dungeons');
   revalidatePath('/dashboard');
   return { message: data.data?.message };
+}
+
+export async function updateDungeonAction(
+  dungeonId: string,
+  name: string,
+  description: string,
+  token: string
+): Promise<{ error: string } | void> {
+  const res = await fetch(`${API_BASE}/dungeons/${dungeonId}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify({ name, description })
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    return { error: data.message ?? 'Could not update dungeon' };
+  }
+
+  revalidatePath('/my-dungeons');
+  revalidatePath(`/dungeons/${dungeonId}`);
 }

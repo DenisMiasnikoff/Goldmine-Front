@@ -26,11 +26,19 @@ export default function Sidebar({ isVisible }: SidebarProps) {
             <span> Popular</span>
           </Link>
         </li>
-        <li className={`${styles.sideNav__item} ${pathName==='/myDungeons'?styles.sideNav__item_active:""}`}>
+        <li className={`${styles.sideNav__item} ${pathName==='/dungeons'?styles.sideNav__item_active:""}`}>
           <Link href="/dungeons" className={styles.sideNav__link}>
             <Warehouse color="#663300" />
-            <span> My Dungeons</span>
+            <span> Dungeons</span>
           </Link>
+          
+        </li>
+         <li className={`${styles.sideNav__item} ${pathName==='/my-dungeons'?styles.sideNav__item_active:""}`}>
+          <Link href="/my-dungeons" className={styles.sideNav__link}>
+            <Warehouse color="#663300" />
+            <span>My Dungeons</span>
+          </Link>
+          
         </li>
       </ul>
 

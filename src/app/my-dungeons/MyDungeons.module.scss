@@ -1,0 +1,254 @@
+@use "../_styles//variables.scss" as *;
+
+.page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+
+  h1 {
+    color: $color-headline;
+    font-size: 1.6rem;
+  }
+}
+
+.createBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 20px;
+  background-color: $color-button;
+  color: $color-button-text;
+  border: none;
+  border-radius: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: $color-button-dark;
+  }
+}
+
+.createForm {
+  background: white;
+  border: 1px solid var(--color-grey-light-4);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.editForm {
+  width: 100%;
+  padding: 16px;
+  background: var(--color-grey-light-2);
+  border-radius: 8px;
+}
+
+.editTitle {
+  color: $color-headline;
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+
+.field {
+  margin-bottom: 12px;
+}
+
+.label {
+  display: block;
+  color: $color-paragraph;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--color-grey-light-4);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: $color-headline;
+  box-sizing: border-box;
+
+  &:focus {
+    outline: none;
+    border-color: $color-button;
+  }
+}
+
+.textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--color-grey-light-4);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: $color-headline;
+  resize: vertical;
+  box-sizing: border-box;
+
+  &:focus {
+    outline: none;
+    border-color: $color-button;
+  }
+}
+
+.error {
+  color: $color-button-secondary;
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+}
+
+.editActions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+.cancelBtn {
+  padding: 6px 16px;
+  background: transparent;
+  border: 1px solid var(--color-grey-light-4);
+  border-radius: 20px;
+  color: $color-paragraph;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.85rem;
+
+  &:hover {
+    background: var(--color-grey-light-2);
+  }
+}
+
+.saveBtn {
+  padding: 6px 16px;
+  background-color: $color-button;
+  color: $color-button-text;
+  border: none;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover:not(:disabled) {
+    background-color: $color-button-dark;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dungeonRow {
+  background: white;
+  border: 1px solid var(--color-grey-light-4);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  &:hover {
+    border-color: $color-button;
+  }
+}
+
+.dungeonInfo {
+  flex: 1;
+}
+
+.dungeonName {
+  color: $color-headline;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.dungeonDesc {
+  color: $color-paragraph;
+  font-size: 0.85rem;
+}
+
+.dungeonActions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.editBtn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  background: var(--color-grey-light-2);
+  border: none;
+  border-radius: 20px;
+  color: $color-headline;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--color-grey-light-3);
+  }
+}
+
+.enterBtn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  background-color: $color-button;
+  color: $color-button-text;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: $color-button-dark;
+  }
+}
+
+.empty {
+  text-align: center;
+  padding: 60px;
+  color: $color-paragraph;
+  background: white;
+  border: 1px solid var(--color-grey-light-4);
+  border-radius: 8px;
+}
+
+.exploreLink {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 8px 20px;
+  background-color: $color-button;
+  color: $color-button-text;
+  border-radius: 20px;
+  font-weight: 700;
+  text-decoration: none;
+
+  &:hover {
+    background-color: $color-button-dark;
+  }
+}

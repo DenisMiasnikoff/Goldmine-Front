@@ -1,0 +1,123 @@
+@use "../../_styles//variables.scss" as *;
+
+.page {
+  min-height: 100vh;
+  background-color: var(--color-grey-light-1);
+}
+
+.banner {
+  height: 120px;
+  width: 100%;
+}
+
+.dungeonHeader {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  border-bottom: 1px solid var(--color-grey-light-4);
+}
+
+.dungeonInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dungeonName {
+  font-size: 1.4rem;
+  color: $color-headline;
+  margin: 0;
+}
+
+.createPostBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 20px;
+  background-color: $color-button;
+  color: $color-button-text;
+  border: none;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: $color-button-dark;
+  }
+}
+
+.layout {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.feed {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.formCard {
+  background: white;
+  border: 1px solid var(--color-grey-light-4);
+  border-radius: 8px;
+  padding: 20px;
+
+  h3 {
+    color: $color-headline;
+    margin-bottom: 16px;
+    font-size: 1rem;
+  }
+}
+
+.empty {
+  text-align: center;
+  padding: 60px;
+  color: $color-paragraph;
+  background: white;
+  border: 1px solid var(--color-grey-light-4);
+  border-radius: 8px;
+}
+
+.sidebar {
+  width: 280px;
+  flex-shrink: 0;
+}
+
+.aboutCard {
+  background: white;
+  border: 1px solid var(--color-grey-light-4);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.aboutTitle {
+  color: $color-headline;
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-grey-light-3);
+}
+
+.aboutDesc {
+  color: $color-paragraph;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.aboutMeta {
+  color: var(--color-grey-dark-2);
+  font-size: 0.8rem;
+}
