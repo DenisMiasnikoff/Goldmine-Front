@@ -40,6 +40,7 @@ export default function Sidebar({ isVisible }: SidebarProps) {
           </Link>
           
         </li>
+
       </ul>
 
       <div className={styles.legal}>
