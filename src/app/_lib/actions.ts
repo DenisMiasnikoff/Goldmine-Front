@@ -229,3 +229,34 @@ export async function updateDungeonAction(
   revalidatePath('/my-dungeons');
   revalidatePath(`/dungeons/${dungeonId}`);
 }
+
+// 5. SEARCH POSTS
+export async function searchPostsAction(
+  query: string, 
+  token?: string
+) {
+  const headers: HeadersInit = {
+    'Content-Type': 'application/json',
+  };
+  
+ 
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`;
+  }
+
+  
+  const res = await fetch(`${API_BASE}/posts/search?q=${encodeURIComponent(query)}`, {
+    method: 'GET',
+    headers,
+    cache: 'no-store'
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    console.error("❌ Search Error:", data.message);
+    return { error: data.message ?? 'Search failed', data: null };
+  }
+
+  return { error: null, data: data.data };
+}
