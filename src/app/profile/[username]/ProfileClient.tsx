@@ -1,14 +1,17 @@
 'use client';
+import { useState } from 'react';
 import { User, Item } from '@/app/_types/DashboardPost';
 import AppLayout from '@/app/_components/AppLayout/AppLayout';
 import styles from './Profile.module.scss';
 import { Gem, Shield, Calendar } from 'lucide-react';
 import Link from 'next/link';
+import { equipItemAction } from '@/app/_lib/actions';
 
 interface ProfileUser extends User {
   inventory: Item[];
   createdAt: string;
   role: string;
+  activeColor?: string;
 }
 
 interface ProfileClientProps {
@@ -25,22 +28,37 @@ export default function ProfileClient({
   token
 }: ProfileClientProps) {
   const userInitial = profileUser.username.charAt(0).toUpperCase();
-  const joinDate = profileUser.createdAt 
-  ? new Date(profileUser.createdAt).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long'
-    })
-  : 'Unknown';
+  const joinDate = profileUser.createdAt
+    ? new Date(profileUser.createdAt).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long'
+      })
+    : 'Unknown';
 
-  const frames = profileUser.inventory?.filter(item => item.itemType === 'frame') || [];
-  const colors = profileUser.inventory?.filter(item => item.itemType === 'color') || [];
+  const [activeColor, setActiveColor] = useState<string | undefined>(
+    profileUser.activeColor
+  );
+
+  const handleEquip = async (item: Item) => {
+    if (!token || item.itemType !== 'color') return;
+    const result = await equipItemAction(item._id, token);
+    if (result && 'activeColor' in result) {
+      setActiveColor(result.activeColor || undefined);
+    }
+  };
 
   return (
     <AppLayout currentUser={currentUser}>
       <div className={styles.page}>
 
         {/* Profile Header */}
-        <div className={styles.profileCard}>
+        <div
+          className={styles.profileCard}
+          style={{
+            backgroundColor: activeColor || 'white',
+            transition: 'background-color 0.3s ease'
+          }}
+        >
           <div className={styles.avatarSection}>
             <div className={styles.avatarWrapper}>
               <div className={styles.avatar}>
@@ -81,13 +99,25 @@ export default function ProfileClient({
             <div className={styles.inventoryGrid}>
               {profileUser.inventory.map((item: Item) => (
                 <div key={item._id} className={styles.inventoryItem}>
+
                   {/* Color preview */}
                   {item.itemType === 'color' && (
-                    <div
-                      className={styles.colorPreview}
-                      style={{ backgroundColor: item.value }}
-                    />
+                    <>
+                      <div
+                        className={styles.colorPreview}
+                        style={{ backgroundColor: item.value }}
+                      />
+                      {isOwnProfile && (
+                        <button
+                          className={`${styles.equipBtn} ${activeColor === item.value ? styles.equipped : ''}`}
+                          onClick={() => handleEquip(item)}
+                        >
+                          {activeColor === item.value ? 'Unequip' : 'Equip'}
+                        </button>
+                      )}
+                    </>
                   )}
+
                   {/* Frame preview */}
                   {item.itemType === 'frame' && (
                     <div
@@ -97,6 +127,7 @@ export default function ProfileClient({
                       <span>{userInitial}</span>
                     </div>
                   )}
+
                   <p className={styles.itemName}>{item.name}</p>
                 </div>
               ))}

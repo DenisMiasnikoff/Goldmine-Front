@@ -25,6 +25,7 @@ export interface User {
   gems: number;
   createdAt?: string; 
   role?: string; 
+  activeColor?: string;
 }
 
 export interface IComment {

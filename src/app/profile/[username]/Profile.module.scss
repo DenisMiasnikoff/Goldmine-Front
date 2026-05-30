@@ -161,3 +161,23 @@
     background-color: $color-button-dark;
   }
 }
+
+.equipBtn {
+  padding: 4px 12px;
+  background: $color-button;
+  color: $color-button-text;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: $color-button-dark;
+  }
+
+  &.equipped {
+    background-color: $color-green-button;
+  }
+}

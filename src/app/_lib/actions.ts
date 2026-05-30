@@ -284,3 +284,46 @@ export async function updateMeAction(
   revalidatePath('/settings');
   revalidatePath('/dashboard');
 }
+
+export async function buyItemAction(
+  itemId: string,
+  token: string
+): Promise<{ error: string } | { success: string; gems: number } | void> {
+  const res = await fetch(`${API_BASE}/items/buy/${itemId}`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    return { error: data.message ?? 'Could not purchase item' };
+  }
+
+  revalidatePath('/shop');
+  revalidatePath('/profile');
+  return { success: 'Item purchased!', gems: data.data.gems };
+}
+
+export async function equipItemAction(
+  itemId: string,
+  token: string
+): Promise<{ error: string } | { activeColor: string | null } | void> {
+  const res = await fetch(`${API_BASE}/users/equipItem/${itemId}`, {
+    method: 'PATCH',
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    return { error: data.message ?? 'Could not equip item' };
+  }
+
+  revalidatePath('/profile');
+  return { activeColor: data.data.activeColor };
+}

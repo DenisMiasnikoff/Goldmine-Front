@@ -1,0 +1,203 @@
+@use "../_styles/variables.scss" as *;
+
+.page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  h1 {
+    color: $color-headline;
+    font-size: 1.6rem;
+    margin: 0;
+  }
+}
+
+.gemBalance {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: white;
+  border: 1px solid var(--color-grey-light-4);
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-weight: 700;
+  color: $color-headline;
+  font-size: 0.95rem;
+}
+
+.subtitle {
+  color: $color-paragraph;
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+}
+
+.categoryTitle {
+  color: $color-headline;
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+  margin-top: 8px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.itemCard {
+  background: white;
+  border: 1px solid var(--color-grey-light-4);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: border-color 0.2s, transform 0.2s;
+
+  &:hover {
+    border-color: $color-button;
+    transform: translateY(-2px);
+  }
+
+  &.owned {
+    border-color: $color-green-button;
+    background: #f0fff0;
+  }
+}
+
+.previewArea {
+  display: flex;
+  justify-content: center;
+  padding: 16px 0;
+}
+
+.colorPreview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.colorCircle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 3px solid var(--color-grey-light-4);
+}
+
+.framePreview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.frameCircle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 5px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: $color-headline;
+  background: var(--color-grey-light-2);
+}
+
+.previewLabel {
+  font-size: 0.75rem;
+  color: $color-paragraph;
+}
+
+.itemInfo {
+  flex: 1;
+}
+
+.itemName {
+  color: $color-headline;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.itemDesc {
+  color: $color-paragraph;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.itemFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 700;
+  color: $color-headline;
+  font-size: 0.95rem;
+}
+
+.buyBtn {
+  padding: 6px 16px;
+  background-color: $color-button;
+  color: $color-button-text;
+  border: none;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover:not(:disabled) {
+    background-color: $color-button-dark;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &.cantAfford {
+    background-color: var(--color-grey-light-3);
+    color: var(--color-grey-dark-2);
+    font-size: 0.75rem;
+  }
+}
+
+.ownedBadge {
+  font-size: 0.85rem;
+  color: $color-green-button;
+  font-weight: 700;
+}
+
+.error {
+  color: $color-button-secondary;
+  font-size: 0.8rem;
+}
+
+.empty {
+  text-align: center;
+  padding: 60px;
+  color: $color-paragraph;
+}
