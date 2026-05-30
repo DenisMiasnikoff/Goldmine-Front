@@ -1,0 +1,99 @@
+@use "../_styles/variables.scss" as *;
+
+.page {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.title {
+  color: $color-headline;
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+.section {
+  background: white;
+  border: 1px solid var(--color-grey-light-4);
+  border-radius: 8px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sectionTitle {
+  color: $color-headline;
+  font-size: 1rem;
+  font-weight: 700;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-grey-light-3);
+  margin: 0;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  color: $color-paragraph;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.input {
+  padding: 10px 12px;
+  border: 1px solid var(--color-grey-light-4);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: $color-headline;
+  width: 100%;
+  box-sizing: border-box;
+
+  &:focus {
+    outline: none;
+    border-color: $color-button;
+  }
+}
+
+.error {
+  color: $color-button-secondary;
+  font-size: 0.85rem;
+}
+
+.success {
+  color: $color-green-button;
+  font-size: 0.85rem;
+}
+
+.saveBtn {
+  padding: 10px 24px;
+  background-color: $color-button;
+  color: $color-button-text;
+  border: none;
+  border-radius: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  align-self: flex-start;
+
+  &:hover:not(:disabled) {
+    background-color: $color-button-dark;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.dangerText {
+  color: $color-paragraph;
+  font-size: 0.9rem;
+}

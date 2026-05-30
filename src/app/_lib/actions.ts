@@ -260,3 +260,27 @@ export async function searchPostsAction(
 
   return { error: null, data: data.data };
 }
+
+export async function updateMeAction(
+  username: string,
+  email: string,
+  token: string
+): Promise<{ error: string } | void> {
+  const res = await fetch(`${API_BASE}/users/updateMe`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify({ username, email })
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    return { error: data.message ?? 'Could not update profile' };
+  }
+
+  revalidatePath('/settings');
+  revalidatePath('/dashboard');
+}

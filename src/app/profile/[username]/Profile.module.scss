@@ -1,0 +1,163 @@
+@use "../../_styles/variables.scss" as *;
+
+.page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.profileCard {
+  background: white;
+  border: 1px solid var(--color-grey-light-4);
+  border-radius: 8px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.avatarSection {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.avatarWrapper {
+  position: relative;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: $color-button;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: $font-logo;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.username {
+  font-size: 1.6rem;
+  color: $color-headline;
+  margin: 0;
+}
+
+.meta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: $color-paragraph;
+  font-size: 0.85rem;
+}
+
+.editBtn {
+  padding: 8px 20px;
+  background-color: $color-button;
+  color: $color-button-text;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: $color-button-dark;
+  }
+}
+
+.section {
+  background: white;
+  border: 1px solid var(--color-grey-light-4);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.sectionTitle {
+  color: $color-headline;
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-grey-light-3);
+}
+
+.inventoryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 12px;
+}
+
+.inventoryItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.colorPreview {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid var(--color-grey-light-4);
+}
+
+.framePreview {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 4px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: $color-headline;
+  background: var(--color-grey-light-2);
+}
+
+.itemName {
+  font-size: 0.75rem;
+  color: $color-paragraph;
+  text-align: center;
+}
+
+.emptyInventory {
+  text-align: center;
+  padding: 32px;
+  color: $color-paragraph;
+}
+
+.shopLink {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 8px 20px;
+  background-color: $color-button;
+  color: $color-button-text;
+  border-radius: 20px;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 0.85rem;
+
+  &:hover {
+    background-color: $color-button-dark;
+  }
+}

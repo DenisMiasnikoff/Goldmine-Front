@@ -94,14 +94,17 @@ export default function Header({ onLogoClick, currentUser }: HeaderProps) {
 
           {isDropdownOpen && (
             <div className={styles.dropdown}>
-              <button className={styles.dropdownItem}>
-                <UserIcon size={16} color="#663300" />
-                <span>Profile</span>
-              </button>
-              <button className={styles.dropdownItem}>
-                <Settings size={16} color="#663300" />
-                <span>Settings</span>
-              </button>
+              <button className={styles.dropdownItem}
+               onClick={() => router.push(`/profile/${username}`)}>
+               <UserIcon size={16} color="#663300" />
+             <span>Profile</span>
+             </button>
+            <button className={styles.dropdownItem} onClick={() => {
+              setIsDropdownOpen(false);
+              router.push('/settings'); }}>
+            <Settings size={16} color="#663300" />
+             <span>Settings</span>
+            </button>
               <div className={styles.dropdownDivider} />
               <form action={logoutAction}>
                 <button type="submit" className={styles.dropdownItem}>

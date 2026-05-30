@@ -23,6 +23,8 @@ export interface User {
   username: string;
   email: string;
   gems: number;
+  createdAt?: string; 
+  role?: string; 
 }
 
 export interface IComment {
@@ -42,4 +44,14 @@ export interface Dungeon {
   dungBanner: string;
   moderators: string[];
   createdAt: string;
+}
+
+export interface Item {
+  _id: string;
+  name: string;
+  price: number;
+  description: string;
+  image: string;
+  itemType: 'color' | 'frame';
+  value: string;
 }
